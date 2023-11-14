@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\EstadoCivil;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Socio extends Model
 {
@@ -13,7 +14,7 @@ class Socio extends Model
     protected $fillable = [
         'nome',
         'matricula',
-        'data_admissão',
+        'data_admissao',
         'data_nascimento',
         'natural',
         'nome_mae',
@@ -32,6 +33,7 @@ class Socio extends Model
         'tempo_trabalho',
         'anos_municipio',
         'endereco',
+        'telefone',
         'propriedade_de',
         'nome_esposa',
         'data_emissao',
@@ -39,7 +41,22 @@ class Socio extends Model
         'cpf'
     ];
 
-    protected $cast = [
-        'estado_civil' => EstadoCivil::class
+    protected $casts = [
+        'estado_civil' => EstadoCivil::class,
+
     ];
+
+
+    public function getCreatedAtAttribute($value)
+    {
+        return Carbon::parse($value)->setTimezone('America/Sao_Paulo')->format('d/m/Y H:i:s');
+
+    }
+
+    public function getUpdatedAtAttribute($value)
+    {
+        return Carbon::parse($value)->setTimezone('America/Sao_Paulo')->format('d/m/Y H:i:s');
+
+    }
+
 }

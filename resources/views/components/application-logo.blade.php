@@ -1,3 +1,3 @@
 <div {{ $attributes }}>
-    <img src="{{ asset('logo-strrubim.jpeg') }}" width="93px" />
+    <img src="{{ asset('logo-strrubim.png') }}" width="93px" />
 </div>

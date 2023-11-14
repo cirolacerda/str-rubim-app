@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('nome', 40);
             $table->string('matricula');
-            $table->date('data_admissão');
+            $table->date('data_admissao');
             $table->date('data_nascimento');
             $table->string('natural', 30);
             $table->string('nome_mae', 40);
             $table->string('nome_pai', 40);
-            $table->enum('estado_civil', ['casado_civil', 'casado_religioso', 'solteiro', 'viuvo', 'divorciado', 'desquitado']);
+            $table->string('estado_civil', 30);
             $table->boolean('eleitor');
             $table->string('grau_instrucao');
             $table->string('tipo_trabalho');
@@ -34,8 +34,9 @@ return new class extends Migration
             $table->string('tempo_trabalho');
             $table->string('anos_municipio');
             $table->string('endereco');
+            $table->string('telefone', 15);
             $table->string('propriedade_de');
-            $table->string('nome_esposa', 40);
+            $table->string('nome_esposa', 40)->nullable();
             $table->date('data_emissao');
             $table->string('rg', 40);
             $table->string('cpf', 40);

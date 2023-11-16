@@ -7,6 +7,7 @@ use App\Http\Requests\SocioRequest;
 use App\Models\Socio;
 use Illuminate\Http\Request;
 use PhpOffice\PhpWord\TemplateProcessor;
+use PhpOffice\PhpWord\Shared\ZipArchive;
 
 class SocioController extends Controller
 {

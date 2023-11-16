@@ -1,0 +1,33 @@
+version: "3.7"
+services:
+  app:
+    build:
+      args:
+        user: ubuntu
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: str-rubim
+    container_name: str-rubim-app
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www
+    networks:
+      - str-rubim
+
+  nginx:
+    image: nginx:latest
+    container_name: str-rubim-nginx
+    restart: unless-stopped
+    ports:
+      - 8000:80
+    volumes:
+      - ./:/var/www
+      - ./docker-compose/nginx:/etc/nginx/conf.d/
+    networks:
+      - str-rubim
+
+networks:
+  str-rubim:
+    driver: bridge
